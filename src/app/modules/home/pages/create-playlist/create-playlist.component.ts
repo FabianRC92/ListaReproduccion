@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PlaylistService } from '../../services/playlist.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-playlist',
@@ -89,5 +90,12 @@ export class CreatePlaylistComponent implements OnInit {
     this.registerForm.reset();
     const control = <FormArray>this.registerForm.get('canciones');
     control.clear();
+  }
+
+  /**
+   * show tooltip alert
+   */
+  public showInfo(): void {
+    Swal.fire('All fields are required');
   }
 }

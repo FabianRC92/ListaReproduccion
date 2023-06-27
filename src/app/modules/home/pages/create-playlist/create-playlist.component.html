@@ -4,7 +4,16 @@
   autocomplete="off"
   (ngSubmit)="addPlayList()"
 >
-  <h3 class="mb-3">New Playlist</h3>
+  <div class="d-flex align-items-center mb-3">
+    <h3>New Playlist</h3>
+
+    <i
+      class="ms-3 fa fa-question"
+      aria-hidden="true"
+      (click)="showInfo()"
+      style="cursor: pointer"
+    ></i>
+  </div>
   <div class="mb-3">
     <label for="nombreLista" class="form-label">Playlist name</label>
     <input
@@ -110,7 +119,7 @@
         </div>
       </form>
     </div>
-    <hr>
+    <hr />
   </ng-container>
 </form>
 <div class="alert alert-danger mt-3" role="alert" *ngIf="errorMessage !== ''">
