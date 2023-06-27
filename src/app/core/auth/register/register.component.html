@@ -1,0 +1,66 @@
+<app-layout>
+  <h3 class="text-center mb-3">Register user</h3>
+  <form
+    [formGroup]="registerForm"
+    autocomplete="off"
+    (ngSubmit)="registerUser()"
+  >
+    <div class="mb-3">
+      <label for="first_name" class="form-label">First name*</label>
+      <input
+        type="text"
+        class="form-control"
+        id="first_name"
+        formControlName="first_name"
+        maxlength="20"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="first_name" class="form-label">Last name*</label>
+      <input
+        type="text"
+        class="form-control"
+        id="last_name"
+        formControlName="last_name"
+        maxlength="20"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address*</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        aria-describedby="emailHelp"
+        formControlName="email"
+        maxlength="50"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password*</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        formControlName="password"
+        maxlength="20"
+      />
+    </div>
+    <div class="d-flex justify-content-end mb-3">
+      <button type="button" class="btn btn-link" routerLink="/">Login</button>
+    </div>
+    <button
+      [disabled]="registerForm.invalid"
+      type="submit"
+      class="btn w-100 btn-outline-primary"
+    >
+      Register
+    </button>
+  </form>
+
+  <ng-template *ngIf="registerForm.invalid || errorMessage !== ''">
+    <div class="alert alert-danger" role="alert">
+      {{ errorMessage }}
+    </div>
+  </ng-template>
+</app-layout>

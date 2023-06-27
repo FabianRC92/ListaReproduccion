@@ -1,0 +1,43 @@
+<app-layout>
+  <h3 class="text-center mb-3">Welcome</h3>
+  <form [formGroup]="loginForm" autocomplete="off" (ngSubmit)="loginUser()">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address*</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        aria-describedby="emailHelp"
+        formControlName="username"
+        maxlength="20"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password*</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        formControlName="password"
+        maxlength="20"
+      />
+    </div>
+    <div class="d-flex justify-content-end mb-3">
+      <button type="button" class="btn btn-link" routerLink="/register">
+        Register
+      </button>
+    </div>
+    <button
+      id="btnLogin"
+      [disabled]="loginForm.invalid"
+      type="submit"
+      class="btn btn-outline-primary w-100"
+    >
+      Login
+    </button>
+  </form>
+
+  <div class="alert alert-danger mt-3" role="alert" *ngIf="errorMessage !== ''">
+    {{ errorMessage }}
+  </div>
+</app-layout>

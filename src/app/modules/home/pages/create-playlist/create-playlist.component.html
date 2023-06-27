@@ -1,0 +1,118 @@
+<form
+  class="box-home"
+  [formGroup]="registerForm"
+  autocomplete="off"
+  (ngSubmit)="addPlayList()"
+>
+  <h3 class="mb-3">New Playlist</h3>
+  <div class="mb-3">
+    <label for="nombreLista" class="form-label">Playlist name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="nombreLista"
+      formControlName="nombreLista"
+      maxlength="20"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="descripcion" class="form-label">Description</label>
+    <input
+      type="text"
+      class="form-control"
+      id="descripcion"
+      formControlName="descripcion"
+      maxlength="20"
+    />
+  </div>
+  <div class="d-flex justify-content-around">
+    <button
+      [disabled]="registerForm.controls['nombreLista'].invalid"
+      type="button"
+      class="btn btn-primary"
+      (click)="addSongs()"
+    >
+      Add song <i class="fa fa-plus" aria-hidden="true"></i>
+    </button>
+
+    <button
+      *ngIf="arraySongs.length"
+      type="button"
+      class="btn btn-danger ms-3"
+      (click)="removeSong()"
+    >
+      <i class="fa fa-trash" aria-hidden="true"></i>
+    </button>
+    <button
+      [disabled]="registerForm.invalid"
+      type="submit"
+      class="btn btn-primary"
+    >
+      Save playlist
+    </button>
+  </div>
+
+  <ng-container
+    formArrayName="canciones"
+    *ngFor="let item of arraySongs; let i = index"
+  >
+    <div class="my-3" style="width: 300px">
+      <form [formGroupName]="i" autocomplete="off">
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Song's name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="titulo_{{ i }}"
+            formControlName="titulo"
+            maxlength="50"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="album" class="form-label">Album's name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="album_{{ i }}"
+            formControlName="album"
+            maxlength="20"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="artista" class="form-label">Artist name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="artista_{{ i }}"
+            formControlName="artista"
+            maxlength="20"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="genero" class="form-label">Genre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="genero_{{ i }}"
+            formControlName="genero"
+            maxlength="20"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="anno" class="form-label">Year of launch</label>
+          <input
+            type="number"
+            class="form-control"
+            id="anno_{{ i }}"
+            formControlName="anno"
+            maxlength="4"
+          />
+        </div>
+      </form>
+    </div>
+    <hr>
+  </ng-container>
+</form>
+<div class="alert alert-danger mt-3" role="alert" *ngIf="errorMessage !== ''">
+  {{ errorMessage }}
+</div>

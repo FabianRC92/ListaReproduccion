@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+.container-auth {
+  background: rgb(99, 66, 217);
+  background: linear-gradient(
+    90deg,
+    rgba(99, 66, 217, 1) 40%,
+    rgba(255, 158, 178, 1) 100%
+  );
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .box {
+    display: flex;
+    flex-direction: column;
+    width: calc(400px - 50px);
+  }
+}
+
+.box-home {
+  height: 75vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
