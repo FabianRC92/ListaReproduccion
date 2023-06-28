@@ -7,11 +7,20 @@
     </div>
     <div class="col-lg-8" *ngIf="listPlayList.length > 0">
       <div class="box-home">
-        <h3 class="mb-3">List of Playlist</h3>
+        <div class="d-flex">
+          <h3 class="mb-3">List of Playlist</h3>
+
+          <i
+            class="ms-3 fa fa-question"
+            aria-hidden="true"
+            (click)="showInfo()"
+            style="cursor: pointer"
+          ></i>
+        </div>
 
         <div class="row">
-          <div class="col-6 flip-card mb-3" *ngFor="let item of listPlayList">
-            <div class="flip-card-inner">
+          <div appShadowCard="shadow-hover" class="col-6 flip-card mb-3" *ngFor="let item of listPlayList">
+            <div  class="flip-card-inner">
               <div
                 class="flip-card-front d-flex flex-column justify-content-center align-items-center"
               >

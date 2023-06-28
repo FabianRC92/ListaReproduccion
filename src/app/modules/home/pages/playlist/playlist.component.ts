@@ -56,7 +56,7 @@ export class PlaylistComponent implements OnInit {
       },
       showCancelButton: true,
       allowOutsideClick: false,
-      cancelButtonColor:"#d33"
+      cancelButtonColor: '#d33',
     }).then((result) => {
       if (result.isConfirmed) this.removePlayList(name);
     });
@@ -68,5 +68,12 @@ export class PlaylistComponent implements OnInit {
    */
   public createdPlaylist(e: any) {
     if (e) this.loadPlayList();
+  }
+
+  /**
+   * show tooltip alert
+   */
+  public showInfo(): void {
+    Swal.fire('Hover cards for see the list of songs');
   }
 }
